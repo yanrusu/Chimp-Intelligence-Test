@@ -7,7 +7,7 @@ var containerHeight = numbersContainer.offsetHeight;
 var startTime;
 var elapsedTime;
 var timerDisplay = document.getElementById("time");
-var besttime = document.getElementById('besttime');
+var besttime = document.getElementById('besttime2');
 var currentnumber;
 var timerInterval;
 var clickstart = startGame;
@@ -121,11 +121,11 @@ function updateTimer() {
 }
 
 function getBestTime() {
-    return localStorage.getItem("besttime");
+    return localStorage.getItem("besttime2");
 }
 
 function saveBestTime(time) {
-    localStorage.setItem("besttime", time);
+    localStorage.setItem("besttime2", time);
 }
 
 function displayBestTime() {
@@ -133,7 +133,7 @@ function displayBestTime() {
     if (time == null) {
         besttime.textContent = "Best Time：0s";
     } else {
-        besttime.textContent = `Best Time：${time}`;
+        besttime.textContent = `Best Time：${time}s`;
     }
 }
 
