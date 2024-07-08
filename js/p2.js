@@ -22,21 +22,26 @@ function startGame() {
 }
 
 function generateNumbers() {
-    var number
-    numbers = Array.from({ length: 9 }, (_, i) => i + 1);
-    shuffleArray(numbers);
+    for(var i = 0 ; i < 5 ; i++){
+        do{
+            var int = Math.floor(Math.random() * 9) + 1;
+        }while(numbers.includes(int));
+        numbers.push(int);
+    }
+    console.log(numbers);
+    // shuffleArray(numbers);
     displayNumbers();
 }
 
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+// function shuffleArray(array) {
+//     for (var i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+// }
 
 function displayNumbers() {
-    var currentNumber = 1;
+    var currentNumber = 0;
     startButton.style.visibility = "hidden";
     numbersContainer.innerHTML = "";
     const usedPositions = [];
@@ -58,10 +63,10 @@ function displayNumbers() {
         usedPositions.push({ x: posX, y: posY });
 
         numberDiv.addEventListener("click", () => {
-            if (gameStarted && parseInt(numberDiv.textContent) === currentNumber) {
+            if (gameStarted && parseInt(numberDiv.textContent) === numbers[currentNumber]) {
                 numberDiv.remove();
                 currentNumber++;
-                if (currentNumber > 9) {
+                if (currentNumber > 4) {
                     endGame();
                 }
             }
@@ -112,18 +117,16 @@ function savebestime(time){
 
 function displaybesttime(){
     var time=getbestTime();
-    console.log(time)
     if(time==null){
         besttime.textContent = "Best Time：0s";
     }
     else{
-        besttime.textContent = `Best Time：${time}s`;
+        besttime.textContent = `Best Time：${time}`;
     }
 }
 
 function updatebesttime(elapsedTime){
     var time=getbestTime();
-    console.log(time);
     if(time==null){
         savebestime(elapsedTime.toFixed(2));
         displaybesttime();
