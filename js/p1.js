@@ -1,19 +1,20 @@
 var numbers = [];
 var gameStarted = false;
-var startButton = document.getElementById('startButton');
-var numbersContainer = document.getElementById('numbersContainer');
+var startButton = document.getElementById("startButton");
+var numbersContainer = document.getElementById("numbersContainer");
 var containerWidth = numbersContainer.offsetWidth;
 var containerHeight = numbersContainer.offsetHeight;
 var startTime;
 var elapsedTime;
-var timerDisplay = document.getElementById('timer');
+var timerDisplay = document.getElementById("time");
+var besttime = document.getElementById('besttime');
 var currentNumber;
 var timerInterval;
 
 function startGame() {
     gameStarted = true;
     startButton.disabled = true;
-    numbersContainer.innerHTML = '';
+    numbersContainer.innerHTML = "";
     currentNumber = 1;
     generateNumbers();
     startTime = Date.now();
@@ -35,15 +36,15 @@ function shuffleArray(array) {
 
 function displayNumbers() {
     var currentNumber = 1;
-    startButton.style.visibility = 'hidden';
-    numbersContainer.innerHTML = '';
+    startButton.style.visibility = "hidden";
+    numbersContainer.innerHTML = "";
     const usedPositions = [];
-    var h1height = document.querySelector("h1").offsetHeight;
+    // var h1height = document.querySelector("startButton").offsetHeight;
 
     numbers.forEach(number => {
-        var numberDiv = document.createElement('div');
+        var numberDiv = document.createElement("div");
         numberDiv.textContent = number;
-        numberDiv.classList.add('number');
+        numberDiv.classList.add("number");
 
         var posX, posY;
         do {
@@ -51,11 +52,11 @@ function displayNumbers() {
             posY = Math.floor(Math.random() * (containerHeight - 60));
         } while (checkOverlap(posX, posY, usedPositions));
 
-        numberDiv.style.left = posX + 'px';
-        numberDiv.style.top = posY + h1height + 'px';
+        numberDiv.style.left = posX + "px";
+        numberDiv.style.top = posY  + "px";
         usedPositions.push({ x: posX, y: posY });
 
-        numberDiv.addEventListener('click', () => {
+        numberDiv.addEventListener("click", () => {
             if (gameStarted && parseInt(numberDiv.textContent) === currentNumber) {
                 numberDiv.remove();
                 currentNumber++;
@@ -82,9 +83,10 @@ function endGame() {
     clearInterval(timerInterval);
     var endTime = Date.now(); 
     elapsedTime = (endTime - startTime) / 1000; 
+    updatebesttime(elapsedTime);
     timerDisplay.textContent = `Time：${elapsedTime.toFixed(2)}s`;
     startButton.disabled = false;
-    startButton.style.visibility = 'visible';
+    startButton.style.visibility = "visible";
     numbersContainer.innerHTML = `<h2>Game Over!</h2>`;
 }
 
@@ -98,7 +100,40 @@ function updateTimer() {
     }, 100);
 }
 
-window.addEventListener('resize', debounce(() => {
+function getbestTime(){
+    return localStorage.getItem("besttime")
+
+}
+
+function savebestime(time){
+    localStorage.setItem("besttime",time)
+}
+
+function displaybesttime(){
+    var time=getbestTime();
+    console.log(time)
+    if(time==null){
+        besttime.textContent = "Best Time：0s";
+    }
+    else{
+        besttime.textContent = `Best Time：${time}`;
+    }
+}
+
+function updatebesttime(elapsedTime){
+    var time=getbestTime();
+    console.log(time);
+    if(time==null){
+        savebestime(elapsedTime.toFixed(2));
+        displaybesttime();
+    }
+    else if(elapsedTime<parseFloat(time)){
+        savebestime(elapsedTime.toFixed(2));
+        displaybesttime();
+    }
+}
+
+window.addEventListener("resize", debounce(() => {
     containerWidth = numbersContainer.offsetWidth;
     containerHeight = numbersContainer.offsetHeight;
     if (gameStarted) {
@@ -106,7 +141,8 @@ window.addEventListener('resize', debounce(() => {
     }
 }, 200));
 
-startButton.addEventListener('click', startGame);
+startButton.addEventListener("click", startGame);
+displaybesttime();
 
 function debounce(func, wait) {
     let timeout;
@@ -115,3 +151,5 @@ function debounce(func, wait) {
         timeout = setTimeout(() => func.apply(this, arguments), wait);
     };
 }
+
+
