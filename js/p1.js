@@ -48,8 +48,8 @@ function displayNumbers() {
 
         var posX, posY;
         do {
-            posX = Math.floor(Math.random() * (containerWidth - 60));
-            posY = Math.floor(Math.random() * (containerHeight - 60));
+            posX = Math.floor(Math.random() * (containerWidth - 65));
+            posY = Math.floor(Math.random() * (containerHeight- 65));
         } while (checkOverlap(posX, posY, usedPositions));
 
         numberDiv.style.left = posX + "px";
@@ -71,7 +71,7 @@ function displayNumbers() {
 
 function checkOverlap(posX, posY, positions) {
     for (var position of positions) {
-        if (Math.abs(posX - position.x) < 60 && Math.abs(posY - position.y) < 60) {
+        if (Math.abs(posX - position.x) < 70 && Math.abs(posY - position.y) < 70) {
             return true;
         }
     }
@@ -111,7 +111,6 @@ function savebestime(time){
 
 function displaybesttime(){
     var time=getbestTime();
-    console.log(time)
     if(time==null){
         besttime.textContent = "Best Time：0s";
     }
@@ -122,7 +121,6 @@ function displaybesttime(){
 
 function updatebesttime(elapsedTime){
     var time=getbestTime();
-    console.log(time);
     if(time==null){
         savebestime(elapsedTime.toFixed(2));
         displaybesttime();
@@ -136,6 +134,7 @@ function updatebesttime(elapsedTime){
 window.addEventListener("resize", debounce(() => {
     containerWidth = numbersContainer.offsetWidth;
     containerHeight = numbersContainer.offsetHeight;
+    console.log(containerHeight)
     if (gameStarted) {
         displayNumbers();
     }

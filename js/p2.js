@@ -22,6 +22,7 @@ function startGame() {
 }
 
 function generateNumbers() {
+    var number
     numbers = Array.from({ length: 9 }, (_, i) => i + 1);
     shuffleArray(numbers);
     displayNumbers();
@@ -116,7 +117,7 @@ function displaybesttime(){
         besttime.textContent = "Best Time：0s";
     }
     else{
-        besttime.textContent = `Best Time：${time}`;
+        besttime.textContent = `Best Time：${time}s`;
     }
 }
 
