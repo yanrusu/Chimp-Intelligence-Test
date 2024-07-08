@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ body {
 } */
 
 #backhome {
-    color: #007bff;
+    color: black;
     font-size: 30px;
     cursor: pointer;
     position: absolute;
@@ -81,7 +81,7 @@ body {
     font-size: 1em;
     width: 10%;
     color: #ffffff;
-    background-color: #007bff;
+    background-color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -98,21 +98,21 @@ body {
     width: 100%;
     border: 1px solid #dddddd;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color:white;
     overflow: hidden;
     position: relative;
 }
 
 .number {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    color: #ffffff;
+    width: 55px;
+    height: 55px;
+    background-color: rgb(42, 36, 36);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 20%;
     cursor: pointer;
     font-size: 1.2em;
     /* transition: background-color 0.3s ease; */
