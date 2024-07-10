@@ -107,7 +107,7 @@ function endGame() {
     startButton.innerHTML = "Start Game";
     startButton.addEventListener("click",clickstart);
     checkready = false;
-    numbersContainer.innerHTML = `<h2>Game Over!</h2>`;
+    numbersContainer.innerHTML = `<h2>Game Over</h2>`;
 }
 
 function updateTimer() {

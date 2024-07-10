@@ -103,7 +103,7 @@ function endGame() {
     startButton.style.visibility = "visible";
     startButton.innerHTML = "Start Game";
     checkready = false;
-    numbersContainer.innerHTML = `<h2>Game Over!</h2>`;
+    numbersContainer.innerHTML = `<h2>Game Over</h2>`;
 }
 
 function updateTimer() {

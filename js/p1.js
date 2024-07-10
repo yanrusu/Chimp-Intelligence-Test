@@ -87,7 +87,7 @@ function endGame() {
     timerDisplay.textContent = `Time：${elapsedTime.toFixed(2)}s`;
     startButton.disabled = false;
     startButton.style.visibility = "visible";
-    numbersContainer.innerHTML = `<h2>Game Over!</h2>`;
+    numbersContainer.innerHTML = `<h2>Game Over</h2>`;
 }
 
 function updateTimer() {
