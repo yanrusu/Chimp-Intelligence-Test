@@ -134,7 +134,6 @@ function updatebesttime(elapsedTime){
 window.addEventListener("resize", debounce(() => {
     containerWidth = numbersContainer.offsetWidth;
     containerHeight = numbersContainer.offsetHeight;
-    console.log(containerHeight)
     if (gameStarted) {
         displayNumbers();
     }

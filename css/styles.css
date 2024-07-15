@@ -42,11 +42,25 @@ body {
   
 }
 
-h2 {
-  padding-left: 155px;
-  padding-top: 10px;
+
+#ref {
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
-#video {
-  padding-left: 155px;
+.videoc {
+  width: 560px;  /* 固定寬度 */
+  height: 315px; /* 固定高度 */
+  position: relative;
+  overflow: hidden;
+}
+
+.videoc iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
