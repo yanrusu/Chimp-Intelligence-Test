@@ -11,8 +11,8 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
     background-color: #ffffff;
     padding: 1em;
