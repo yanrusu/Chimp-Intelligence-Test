@@ -139,7 +139,6 @@ window.addEventListener("resize", debounce(() => {
     }
 }, 200));
 
-startButton.addEventListener("click", startGame);
 displaybesttime();
 
 function debounce(func, wait) {
