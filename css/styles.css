@@ -41,3 +41,12 @@ body {
   text-decoration: none;
   
 }
+
+h2 {
+  padding-left: 155px;
+  padding-top: 10px;
+}
+
+#video {
+  padding-left: 155px;
+}
