@@ -53,8 +53,8 @@ body {
 }
 
 .videoc {
-  width: 560px;  /* 固定寬度 */
-  height: 315px; /* 固定高度 */
+  width: 560px;  
+  height: 315px;
   position: relative;
   overflow: hidden;
 }
@@ -64,3 +64,13 @@ body {
   height: 100%;
   border: 0;
 }
+
+@media(max-width: 700px) {
+  .videoc {
+    width: 360px;  
+    height: 215px;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
