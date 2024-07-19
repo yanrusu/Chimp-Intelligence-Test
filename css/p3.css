@@ -73,13 +73,10 @@ body {
 
 }
 
-
-
-
 #startButton {
     padding: 10px 20px;
     font-size: 1em;
-    width: 10%;
+    width: 100px;
     color: #ffffff;
     background-color: black;
     border: none;
